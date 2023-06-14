@@ -2,7 +2,7 @@ from math import pi, sin, cos
 from colorama import Fore, Style
 import random
 import datetime
-import re
+import json
 
 class Bot:
     def __init__(self):
@@ -19,6 +19,8 @@ class Bot:
         message = 'Привіт, я бот Володька \U0001F607. '
         self.dialog.append(('Bot', message, datetime.datetime.now().strftime('%H:%M:%S')))
         print(f'{self.magenta}{message}')
+        with open('dialog.json', 'w') as file:
+            json.dump(self.dialog, file)
      
     def select_topic(self):
         while True:
@@ -61,6 +63,9 @@ class Bot:
                 print(message)
                 continue
 
+        with open('dialog.json', 'w') as file:
+            json.dump(self.dialog, file)
+
     def select_math_problem(self):
         message = random.choice(self.responses['вставочки'])
         self.dialog.append(('Bot', message, datetime.datetime.now().strftime('%H:%M:%S')))
@@ -97,6 +102,9 @@ class Bot:
                 self.dialog.append(('Bot', message, datetime.datetime.now().strftime('%H:%M:%S')))
                 print(message)
                 continue
+        
+        with open('dialog.json', 'w') as file:
+            json.dump(self.dialog, file)
 
     def calculate_vector_product(self):
         numbers = []
@@ -154,6 +162,9 @@ class Bot:
         self.dialog.append(('Bot', message, datetime.datetime.now().strftime('%H:%M:%S')))
         print(f'{self.magenta}{message}')
 
+        with open('dialog.json', 'w') as file:
+            json.dump(self.dialog, file)
+
     def calculate_square(self):
         message1 = f'''{random.choice(self.responses['вставочки'])}Якщо бажаєте повернутись до попереднього меню, введіть "назад"'''
         self.dialog.append(('Bot', message1, datetime.datetime.now().strftime('%H:%M:%S')))
@@ -171,7 +182,7 @@ class Bot:
             try:
                 radius = float(radius)
                 S, s = float(radius)**2, float(radius)**2*pi
-                message = f'Площа кола з радіусом {radius} см дорівнює {S}π см² або {round(s, 3)} см²'
+                message = f'Площа кола з радіусом {radius} см дорівнює {round(S, 3)}π см² або {round(s, 3)} см²'
                 self.dialog.append(('Bot', message, datetime.datetime.now().strftime('%H:%M:%S')))
                 print(f'{self.magenta}{message}')
                 return_to_menu = True
@@ -182,6 +193,8 @@ class Bot:
                     message = random.choice(self.responses['ерор'])
                     self.dialog.append(('Bot', message, datetime.datetime.now().strftime('%H:%M:%S')))
                     print(message)
+        with open('dialog.json', 'w') as file:
+            json.dump(self.dialog, file)
 
     def calculate_distance_to_line(self):
         message1 = f'''{random.choice(self.responses['вставочки'])}Якщо бажаєте повернутись до попереднього меню, введіть "назад"'''
@@ -269,6 +282,9 @@ class Bot:
         self.dialog.append(('Bot', message, datetime.datetime.now().strftime('%H:%M:%S')))
         print(f'{self.magenta}{message}')
 
+        with open('dialog.json', 'w') as file:
+            json.dump(self.dialog, file)
+
     def sin_cos(self):
         message1 = f"{random.choice(self.responses['вставочки'])}"
         self.dialog.append(('Bot', message1, datetime.datetime.now().strftime('%H:%M:%S')))
@@ -297,6 +313,8 @@ class Bot:
                 self.dialog.append(('Bot', message, datetime.datetime.now().strftime('%H:%M:%S')))
                 print(message)
                 continue
+        with open('dialog.json', 'w') as file:
+            json.dump(self.dialog, file)
     
     def physics_problem(self):
         while True:
@@ -351,6 +369,8 @@ class Bot:
                 message = f'\nСхоже, що не всі введені вами значення підходять, має бути три числа, перевірте і спробуйте ввести ще раз \U0001F642 '
                 self.dialog.append(('Bot', message, datetime.datetime.now().strftime('%H:%M:%S')))
                 print(f'{self.magenta}{message}')
+        with open('dialog.json', 'w') as file:
+            json.dump(self.dialog, file)
 
     def select_geography_problem(self):
         message = random.choice(self.responses['вставочки'])
@@ -384,6 +404,8 @@ class Bot:
                 self.dialog.append(('Bot', message, datetime.datetime.now().strftime('%H:%M:%S')))
                 print(message)
                 continue
+        with open('dialog.json', 'w') as file:
+            json.dump(self.dialog, file)
 
     def mountaints(self):
         message = f'''\nТоп-5 найвищих гір у світі:
@@ -394,11 +416,15 @@ class Bot:
         5. Крістобаль-Колон - 5700 м. '''
         self.dialog.append(('Bot', message, datetime.datetime.now().strftime('%H:%M:%S')))
         print(f'{self.magenta}{message}')
+        with open('dialog.json', 'w') as file:
+            json.dump(self.dialog, file)
 
     def mainland(self):
         message = f'''\nЄвразія — найбільший материк на Землі, що складається з Європи та Азії. Розташований в основному між північною та східною півкулями, \nмежує з Атлантичним океаном на заході, Тихим на сході, Північно-Льодовитим на півночі, а також Африкою, Середземним морем та Індійським океаном на півдні. '''
         self.dialog.append(('Bot', message, datetime.datetime.now().strftime('%H:%M:%S')))
         print(f'{self.magenta}{message}')
+        with open('dialog.json', 'w') as file:
+            json.dump(self.dialog, file)
 
     def reservoirs(self):
         message = f'''\nНайбільші за площею водосховища світу:
@@ -412,6 +438,8 @@ class Bot:
         8. Рибінське водосховище (4580 км²; Росія) '''
         self.dialog.append(('Bot', message, datetime.datetime.now().strftime('%H:%M:%S')))
         print(f'{self.magenta}{message}')
+        with open('dialog.json', 'w') as file:
+            json.dump(self.dialog, file)
     
     def select_philology_problem(self):
         message = random.choice(self.responses['вставочки'])
@@ -441,6 +469,8 @@ class Bot:
                 self.dialog.append(('Bot', message, datetime.datetime.now().strftime('%H:%M:%S')))
                 print(message)
                 continue
+        with open('dialog.json', 'w') as file:
+            json.dump(self.dialog, file)
 
     def adjectives(self):
         message = f'''\nІменник і прикметник - самостійні частини мови, проте в реченні між ними завжди встановлюється зв'язок, \nпри якому іменник виступає в ролі домінанти, а прикметник - в ролі залежного слова. 
@@ -448,6 +478,8 @@ class Bot:
 Кожен предмет або явище має певні ознаки, що конкретизують його значення. Слова, які називають ознаку предмета, є прикметниками. \nВони відповідають на питання який? яка? яке? в залежності від роду іменника, до якого відносяться. \nНаприклад, зелене яблуко - "зелене" - ознака, прикметник; "яблуко" - предмет, іменник.'''
         self.dialog.append(('Bot', message, datetime.datetime.now().strftime('%H:%M:%S')))
         print(f'{self.magenta}{message}')
+        with open('dialog.json', 'w') as file:
+            json.dump(self.dialog, file)
 
     def nouns(self):
         message = '''
@@ -463,6 +495,8 @@ class Bot:
     форму як множину від нового слова колесо. '''
         self.dialog.append(('Bot', message, datetime.datetime.now().strftime('%H:%M:%S')))
         print(f'{self.magenta}{message}')
+        with open('dialog.json', 'w') as file:
+            json.dump(self.dialog, file)
 
     def text_handling(self):
         message = random.choice(self.responses['вставочки'])
@@ -496,6 +530,8 @@ class Bot:
                 self.dialog.append(('Bot', message, datetime.datetime.now().strftime('%H:%M:%S')))
                 print(message)
                 continue
+        with open('dialog.json', 'w') as file:
+            json.dump(self.dialog, file)
 
     def get_unique_words(self):
         self.words = []
@@ -544,6 +580,8 @@ class Bot:
 {self.words}"""
         self.dialog.append(('Bot', message, datetime.datetime.now().strftime('%H:%M:%S')))
         print(f'{self.magenta}{message}')
+        with open('dialog.json', 'w') as file:
+            json.dump(self.dialog, file)
 
     def reversed_file(self):
         while True:
@@ -584,6 +622,8 @@ class Bot:
         message =f"\nВміст файлу {input_file} в зворотному порядку збережено до файлу {output_file}"
         self.dialog.append(('Bot', message, datetime.datetime.now().strftime('%H:%M:%S')))
         print(f'{self.magenta}{message}')
+        with open('dialog.json', 'w') as file:
+            json.dump(self.dialog, file)
 
     def lowercase(self):
         while True:
@@ -623,6 +663,8 @@ class Bot:
         message =f"\nВміст файлу {input_file} у нижньому регістрі збережено до файлу {output_file}"
         self.dialog.append(('Bot', message, datetime.datetime.now().strftime('%H:%M:%S')))
         print(f'{self.magenta}{message}')
+        with open('dialog.json', 'w') as file:
+            json.dump(self.dialog, file)
         
     def common(self):
         message = random.choice(self.responses['вставочки'])
@@ -652,6 +694,8 @@ class Bot:
                 self.dialog.append(('Bot', message, datetime.datetime.now().strftime('%H:%M:%S')))
                 print(message)
                 continue
+        with open('dialog.json', 'w') as file:
+            json.dump(self.dialog, file)
 
     def get_current_season(self):
         now = datetime.datetime.now()
@@ -670,11 +714,15 @@ class Bot:
         message = f"Зараз {season}."
         self.dialog.append(('Bot', message, datetime.datetime.now().strftime('%H:%M:%S')))
         print(f'{self.magenta}{message}')
+        with open('dialog.json', 'w') as file:
+            json.dump(self.dialog, file)
 
     def get_name(self):
         message = 'Мене звати бот Володька.'
         self.dialog.append(('Bot', message, datetime.datetime.now().strftime('%H:%M:%S')))
         print(f'{self.magenta}{message}')
+        with open('dialog.json', 'w') as file:
+            json.dump(self.dialog, file)
 
     def others(self):
         message = random.choice(self.responses['вставочки'])
@@ -704,6 +752,8 @@ class Bot:
                 self.dialog.append(('Bot', message, datetime.datetime.now().strftime('%H:%M:%S')))
                 print(message)
                 continue
+        with open('dialog.json', 'w') as file:
+            json.dump(self.dialog, file)
 
     def get_random_quote(self):
         self.quotes = [
@@ -716,6 +766,8 @@ class Bot:
         message = f"Мотивуюча цитата для вас: {quote}"
         self.dialog.append(('Bot', message, datetime.datetime.now().strftime('%H:%M:%S')))
         print(f'{self.magenta}{message}')
+        with open('dialog.json', 'w') as file:
+            json.dump(self.dialog, file)
 
     def possibility(self):
         while True :
@@ -730,6 +782,8 @@ class Bot:
                 self.dialog.append(('Bot', answer, datetime.datetime.now().strftime('%H:%M:%S')))
                 print(f'{self.magenta}{answer}')
                 break
+        with open('dialog.json', 'w') as file:
+            json.dump(self.dialog, file)
  
     def save_dialog(self):
         current_time = datetime.datetime.now()
